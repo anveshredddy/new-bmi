@@ -1,0 +1,96 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<style>
+	input{
+	 padding:5px;
+	 margin:5px;
+	 
+	}
+	
+
+	#heading{
+		
+		color:white;
+		margin-top: 200px;
+
+	}
+
+	#answer{
+                border:black 2px solid;
+                padding:10px 20px 10px 10px;
+                margin-top: 30px;
+                margin-left:550px;
+                background-color:black;
+				color:white;
+                width:10%;
+				text-align: center;} 
+				#but{
+					background-image: url("math2.png");
+				
+				} 
+</style>
+	
+</head>
+<body id="but">
+	<div id="title"></div>
+	
+	<div id="root" align="center"></div>	
+	<div id="answer"  >RESULT</div>
+</body>
+
+</html>
+
+
+<script type="text/babel">
+class Title extends React.Component {
+		render() {
+			return (<h1 id="heading" align="center">BMI CALCULATOR</h1>);
+		}
+	}
+	
+	ReactDOM.render(<Title />, document.getElementById("title"));
+		
+	class Input extends React.Component {
+		render() {
+			return (
+				<div id="button">
+					
+					<input type="number" name="weight"    placeholder="Enter weight"/><br/>
+					<input type="number" name="feet"  placeholder="Enter Feets"/><br/>
+       
+					<button onClick={this.addition} > Calculate BMI </button>
+					
+
+				</div>
+			);
+		}
+		
+		addition = () =>{
+			const we = document.getElementsByName("weight")[0].value;
+			const ft = document.getElementsByName("feet")[0].value;     
+		var a=we/((ft/3.281)*(ft/3.281))
+    if(a < 16){
+		document.getElementById("answer").innerHTML = "YOU ARE UNDERWEIGHT "+a;}
+  
+   else if(a < 25 && a>16){
+    document.getElementById("answer").innerHTML ="YOU ARE NORMAL "+a
+  }
+  else if(a < 30 && a>25){
+    document.getElementById("answer").innerHTML ="YOU ARE OVER WEIGHTED "+a
+  }
+  else if (a>30){
+	document.getElementById("answer").innerHTML ="YOU ARE OBESE "+a
+  }
+	
+		
+    
+
+		}
+  }
+	
+	ReactDOM.render(<Input />, document.getElementById("root"));	
+</script>
